@@ -7,7 +7,7 @@ class AgentState(TypedDict):
 
     user_query: str
     repo_name: str
-    raw_github_data: List[Dict]
+    raw_git_data: List[Dict]
     draft: str
     feedback: Optional[str]
     iteration_count: int
