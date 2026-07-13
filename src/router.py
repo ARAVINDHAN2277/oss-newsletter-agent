@@ -42,8 +42,3 @@ def translate_query_to_repo(user_prompt: str) -> str:
     else :
         raise ValueError("LLM did not return a valid RouterOutput object...")
 
-
-if __name__ == "__main__":
-    test_query = "What is the latest updates in tailwindcss"
-    repo = translate_query_to_repo(test_query)
-    print(f"Resolved repo: {repo}")

@@ -45,8 +45,3 @@ def github_ingestion_node(state: AgentState) -> Dict:
         print(f"-- Error fetching commit data from {repo} : {e}")
         return {"raw_git_data": [{"error": f"Failed to fetch data: {str(e)}"}]}
 
-
-if __name__ == "__main__":
-    result = github_ingestion_node({"repo_name": "facebook/react"})
-    for commit in result["raw_git_data"]:
-        print(commit)
