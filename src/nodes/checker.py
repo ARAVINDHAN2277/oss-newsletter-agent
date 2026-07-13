@@ -1,5 +1,3 @@
-import os 
-import json
 from typing import Dict
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
@@ -9,7 +7,7 @@ from pydantic import BaseModel, Field
 from src.state import AgentState
 
 class checkerOutput(BaseModel):
-    is_verfied: bool = Field(description="True if the draft is 100% accurate without hallucinations, False otherwise.")
+    is_verified: bool = Field(description="True if the draft is 100% accurate without hallucinations, False otherwise.")
     feedback: str = Field(description="A detailed explanation of what needs to be fixed. If is_verified is true, leave this empty.")
 
 load_dotenv()
@@ -57,23 +55,23 @@ def technical_checker_node(state: AgentState) -> Dict:
         )
         
         if isinstance(evaluation, checkerOutput):
-            is_verfied = evaluation.is_verfied
+            is_verified = evaluation.is_verified
             feedback = evaluation.feedback
         else:
             raise ValueError("LLM did not return a valid CheckerOutput object...")
     
     except Exception as e:
         print(f"-- Error parsing JSON validation format: {e}. Defaulting to revision loop...")
-        is_verfied = False
+        is_verified = False
         feedback = "Structural compilation error. Ensure all newsletter entires map accurately to commit histories."
 
-    if is_verfied:
+    if is_verified:
         print(" --Checker Agent Status: PASS ✅ (Draft is 100% accurate!)")
     else:
         print(f" --Checker Agent Status: FAIL ❌ (Issue identified: {feedback})")
 
     return {
-        "is_verified": is_verfied,
-        "feedback": feedback if not is_verfied else None
+        "is_verified": is_verified,
+        "feedback": feedback if not is_verified else None
     }
             
