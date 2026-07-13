@@ -88,5 +88,3 @@ It'll ask what you want to track, do its thing, and drop a markdown file in `out
 If this needed to serve more than one person hitting "run" at a time, I'd move it off a CLI script into something async and queue-based, add real retry/backoff on the LLM calls instead of assuming they'll just work, and probably cache commit data instead of refetching on every run.
 
 ---
-
-Built as a learning project to actually understand agentic workflows past the "watch a YouTube video" stage. Happy to walk through any part of the design if you're reading this before an interview with me.
