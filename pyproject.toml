@@ -13,3 +13,7 @@ dependencies = [
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
 ]
+
+[tool.pyright]
+include = ["src", "main.py"]
+extraPaths = ["."]

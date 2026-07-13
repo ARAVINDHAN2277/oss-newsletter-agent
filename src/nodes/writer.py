@@ -14,10 +14,10 @@ def technical_writer_node(state: AgentState) -> Dict:
     If feedback exists, self-corrects the existing draft.
     """
 
-    iterations = state.get("iterations", 0) + 1
+    iterations = state.get("iteration_count", 0) + 1
 
     llm = init_chat_model(
-        model="google_genai: gemini-2.5-flash",
+        model="google_genai:gemini-2.5-flash",
         temperature=0.7
     )
 

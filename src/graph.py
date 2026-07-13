@@ -13,7 +13,7 @@ def route_decision(state: AgentState) -> str:
     if state.get("is_verified") == True:
         return "end"
 
-    if state.get("iterations", 0) >= 3:
+    if state.get("iteration_count", 0) >= 3:
         print(" -- Safety threshold reached: Forcing compilation breakdown...")
         return "end"
 
@@ -36,7 +36,7 @@ def build_workflow():
     Wires nodes together into a compilation state graph...
     """
 
-    workflow = StateGraph(AgentState)
+    workflow = StateGraph(AgentState)   # type: ignore
 
     ### nodes
     workflow.add_node("fetch_git_data", github_ingestion_node)
@@ -68,5 +68,5 @@ def build_workflow():
         }
     )
 
-    # Compile the graph
+    # Compile the graph architecture into an operational state machine
     return workflow.compile()

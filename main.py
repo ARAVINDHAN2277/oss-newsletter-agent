@@ -6,9 +6,9 @@ from src.graph import build_workflow
 load_dotenv()
 
 def main():
-    print("--- Welcome to Agentic Newletter Engine ---")
+    print("--- Welcome to Agentic Newsletter Engine ---")
 
-    user_prompt = input("\nEnter what you what to track (e.g., 'updates in langchain' or 'trending features of react')")
+    user_prompt = input("\nEnter what you what to track (e.g., 'updates in langchain' or 'trending features of react'): ")
     if not user_prompt.strip():
         print("Query can't be empty. Exiting...")
         return
@@ -75,5 +75,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
 
