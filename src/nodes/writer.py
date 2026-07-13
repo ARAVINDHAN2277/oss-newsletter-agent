@@ -58,6 +58,6 @@ def technical_writer_node(state: AgentState) -> Dict:
 
     return {
         "draft": response.content,
-        "iterations": iterations
+        "iteration_count": iterations
     }
     
